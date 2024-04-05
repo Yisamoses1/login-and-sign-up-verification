@@ -1,5 +1,5 @@
 {
-  "name": "Product Square P&B",
+  "name": "product-square",
   "version": "1.0.0",
   "main": "server.js",
   "directories": {
@@ -7,17 +7,14 @@
   },
   "dependencies": {
     "bcryptjs": "^2.3.0",
-    "body-parser": "^1.20.2",
     "cors": "^2.8.5",
-    "debug": "^2.6.9",
+  
     "dotenv": "^16.3.2",
     "express": "^4.18.2",
     "express-session": "^1.18.0",
-    "git": "^0.1.5",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.0.3",
     "nodemailer": "^6.9.13",
-    "nodemon": "^3.0.3",
     "passport": "^0.7.0",
     "passport-local": "^1.0.0",
     "uuid": "^9.0.1",
@@ -25,9 +22,13 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server"
+    "start": "nodemon server.js"
   },
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "devDependencies": {
+      "debug": "^2.6.9",
+    "nodemon": "^3.1.0"
+  }
 }
