@@ -2,6 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const userRoute = require("./routes/userRoute");
+const MONGO_URL = process.env.MONGO_URL;
 
 const app = express(); 
 
@@ -13,20 +14,16 @@ app.get('/', (req, res) => {
  return  res.status(200).send('Hello!!!!!!')
 })
 
-port = process.env.PORT;
-app.listen(
-  (port,
-  () => {
-    console.log(`Listening for request on port ${port}`);
-  })
-);
+port = process.env.PORT || 6000;
+(async () => {
+  try {
+    await mongoose.connect(MONGO_URL);
+    console.log("Successfully connected to the database");
 
-MONGO_URL = process.env.MONGO_URL;
-mongoose
-  .connect(MONGO_URL)
-  .then(() => {
-    console.log("successfully connected to database");
-  })
-  .catch((err) => {
-    console.log(err);
-  });
+    app.listen(port, () => {
+      console.log(`Listening for requests on port ${port}`);
+    });
+  } catch (err) {
+    console.error("Error connecting to the database:", err);
+  }
+})();
